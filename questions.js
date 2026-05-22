@@ -233,7 +233,7 @@ const questions = [
         options: [
           "Paleolithic Age",
           "Mesolithic Age",
-          "Neolithic Age",
+          "Chalcolithic Age",
           "Neolithic Age"
           
         ],
@@ -335,20 +335,9 @@ const questions = [
         ],
 
         answer: "Dasi Attam"
-    },{
-        question:"Q: ?",
-
-        options: [
-          "",
-          "",
-          "",
-          ""
-          
-        ],
-
-        answer: ""
+    },
         
-    }
+    
 // ......................30 questions Done..................................
 
 ];
