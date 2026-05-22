@@ -7,9 +7,47 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <div class="quiz-container">
+    <div class="home-screen">
         <h1>FlashQuizz</h1>
-        <p class="tagline">Strengthen Your Knowledge daily⚡</p>
+        <p>Strengthen Your Knowledge daily⚡</p>
+        
+        <div class="level-selection">
+            <button class="level-btn">Level 1</button>
+            <button class="level-btn">Level 2</button>
+            <button class="level-btn">Level 3</button>
+            <button class="level-btn">Level 4</button>
+            <button class="level-btn">Level 5</button>
+
+        </div>
+    </div>
+    
+        <div class="section-container">
+
+    <button id="section-back-btn">Back</button>
+
+    <h2>Select Section</h2>
+
+    <div class="section-selection">
+
+    <button class="section-btn">1-10</button>
+    <button class="section-btn">11-20</button>
+    <button class="section-btn">21-30</button>
+    <button class="section-btn">31-40</button>
+    <button class="section-btn">41-50</button>
+
+    <button class="section-btn">51-60</button>
+    <button class="section-btn">61-70</button>
+    <button class="section-btn">71-80</button>
+    <button class="section-btn">81-90</button>
+    <button class="section-btn">91-100</button>
+
+</div>
+</div>
+</div>
+      <div class="quiz-container">
+        <button id="back-btn">Back</button>
+        <!-- <h1>FlashQuizz</h1> 
+        <p class="tagline">Strengthen Your Knowledge daily⚡</p> -->
         <h2 id="question"></h2>
         <div class="options">
             <button class="option-btn"></button>
@@ -31,6 +69,8 @@
         <button class="okbutton" onclick="closePopup()">OK</button>
     </div>
 </div> 
+
+    <script src="questions.js"></script>
     <script src="script.js"></script>
     
 </body>
