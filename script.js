@@ -1,341 +1,418 @@
-const questions = [
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6f0ff;
 
-    {
-        question: "Q: Which planet is known as the Red Planet?",
-
-        options: [
-            "Venus",
-            "Jupiter",
-            "Mars",
-            "Saturn"
-        ],
-
-        answer: "Mars"
-    },
-
-    {
-        question: "Q: Which country has the longest coastline in the world?",
-
-        options: [
-            "Russia",
-            "Canada",
-            "Australia",
-            "Indonesia"
-        ],
-
-        answer: "Canada"
-    },
-    
-    {
-        question: "Q: Who wrote the book '1984'?",
-
-        options: [
-            "George Orwell",
-            "William Shakespeare",
-            "J. K. Rowling",
-            "Ernest Hemingway"
-        ],
-
-        answer: "George Orwell"
-    },
-    {
-        question: "Q: Which Scientist proposed the Theory of Relativity?",
-
-        options: [
-            "Isaac Newton",
-            "Nikola Tesla",
-            "Albert Einstein",
-            "Galileo Galilei"
-        ],
-
-        answer: "Albert Einstein"
-    },
-    {
-        question: "Q: Which country is known as the Land of the Rising Sun? ",
-
-        options: [
-            "China",
-            "Japan",
-            "South Korea",
-            "Thailand"
-        ],
-
-        answer: "Japan"
-    },
-    {
-        question: "Q: Which is the smallest continent in the world? ",
-
-        options: [
-            "Europe", "Australia", "Antarctica", "South America"
-        ],
-
-        answer: "Australia"
-    },{
-        question: "Q: Who wrote the national anthem of India?",
-
-        options: [
-           "Bankim Chandra Chatterjee", "Rabindranath Tagore", "Mahatma Gandhi", "Subhash Chandra Bose"
-        ],
-
-        answer: "Rabindranath Tagore"
-    },{
-        question: "Q: Which is the hardest natural substance on Earth?",
-
-        options: [
-           "Gold", "Iron", "Diamond", "Platinum"],
-
-        answer: "Diamond"
-    },{
-        question: "Q: What is the study of the universe called? ",
-
-        options: [
-            "Astrophysics",
-            "Cosmology",
-            "Astronomy",
-            "Astrobiology"
-        ],
-
-        answer: "Cosmology"
-    },{
-        question: "Q: Who first proposed the idea of the Big Bang Theory",
-
-        options: [
-            "Edwin Hubble",
-            "Isaac Newton",
-            "Georges Lemaître",
-            "Albert Einstein"
-        ],
-
-        answer: "Georges Lemaître"
-    },{
-        question: "Q: What is the approximate age of the Earth",
-
-        options: [
-            "4.6 million years",
-            "4.6 billion years",
-            "460 million years",
-            "14 billion years"
-        ],
-
-        answer: "4.6 billion years"
-    },{
-        question: "Q: Which country adopted the first modern written constitution in 1787?",
-
-        options: [
-            "United Kingdom",
-            "United States of America",
-            "France",
-            "Germany"
-        ],
-
-        answer: "United States of America"
-    },{
-        question: "Q: Who is known as the father of Macroeconomics?",
-
-        options: [
-            "Adam Smith",
-            "John Maynard Keynes",
-            "Alfred Marshall",
-            "David Ricardo"
-        ],
-
-        answer: "John Maynard Keynes"
-    },{
-        question: "Q: When did the Delhi Sultanate rule in India?",
-
-        options: [
-            "750 AD – 1206 AD",
-            "1206 AD – 1526 AD",
-            "1526 AD – 1707 AD",
-            "1707 AD – 1947 AD"
-        ],
-
-        answer: "1206 AD – 1526 AD"
-    },{
-        question: "Q: Who came first to India among the Europeans? ",
-
-        options: [
-            "Portuguese",
-            "Dutch",
-            "German",
-            "French"
-        ],
-
-        answer: "Portuguese"
-    },{
-        question: "Q: What is motion?",
-
-        options: [
-            "Change in position of an object with respect to time and surrounding",
-            "Total path length covered by an object",
-            "Shortest distance between initial and final position",
-            "Rate of change of speed of an object"
-        ],
-
-        answer: "Change in position of an object with respect to time and surrounding"
-    },{
-        question: "Q: What is a substance?",
-
-        options: [
-            "A form of matter that has a uniform and definite composition",
-            "Anything that has mass and occupies space",
-            "A mixture of different materials",
-            "A state of matter like solid, liquid or gas"
-        ],
-
-        answer: "A form of matter that has a uniform and definite composition"
-    },{
-        question: "Q: What is the study of cells called?",
-
-        options: [
-            "Morphology",
-            "Histology",
-            "Physiology",
-            "Cytology"
-        ],
-
-        answer: "Cytology"
-    },{
-        question: "Q: Who is known as the Father of Indian Ecology?",
-
-        options: [
-            "Salim Ali",
-            "Ramdeo Misra",
-            "M. S. Swaminathan",
-            "Hargobind Khurana"
-        ],
-
-        answer: "Ramdeo Misra"
-    },{
-        question: "Q: Where is the headquarters of Sangeet Natak Akademi located?",
-
-        options: [
-            "Mumbai",
-            "Chennai",
-            "New Delhi",
-            "Kolkata"
-        ],
-
-        answer: "New Delhi"
-    },{
-        question: "Q: Which is the oldest classical dance form of India?",
-
-        options: [
-            "Kathak",
-            "Bharatanatyam",
-            "Kathakali",
-            "Odissi"
-        ],
-
-        answer: "Bharatanatyam"
-    },
-
-];
-const question = document.getElementById("question");
-
-const buttons = document.querySelectorAll(".option-btn");
-
-const nextBtn = document.getElementById("next-btn");
-
-const skipBtn = document.getElementById("skip-btn");
-
-let currentQuestion = 0;
-
-let answered = false;
-
-function loadQuestion(){
-
-    answered = false;
-
-    question.innerText = questions[currentQuestion].question;
-
-    buttons.forEach((button, index) => {
-
-        button.innerText = questions[currentQuestion].options[index];
-
-        button.style.background = "linear-gradient(135deg, #575759, #9b9da1)";
-        button.style.color = "white";
-        button.disabled = false; 
-    });
+}
+.home-screen{
+    width: 90%;
+    max-width: 500px;
+    padding: 40px 30px;
+    border-radius: 24px;
+    text-align: center;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    animation: fadeIn 0.5s ease;
+}
+.home-screen h1{
+    font-size: 42px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+.home-screen p{
+    color: #cbd5e1;
+    margin-bottom: 25px;
+    font-size: 16px;
 }
 
-loadQuestion();
-
-buttons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        if(answered){return;}
-
-        answered = true;
-
-        const correctAnswer =questions[currentQuestion].answer;
-         buttons.forEach(btn => {
-            btn.disabled = true;
-        });
- 
-        if(button.innerText === correctAnswer){
-
-            button.style.background = "green";
-
-        } else{
-
-            button.style.background = "red";
-
-            buttons.forEach(btn => {
-
-                if(btn.innerText === correctAnswer){
-
-                    btn.style.background = "green";
-
-                }
-
-            });
-
-        }
-
-    });
-
-});
-
-nextBtn.addEventListener("click", () => {
-
-    if (!answered) {
-        showPopup(
-            "Flashquizz says",
-            "Please select an answer before moving next."
-        );
-        return;
-    }
-
-    currentQuestion++;
-
-    if (currentQuestion < questions.length) {
-        loadQuestion();
-    }else {
-        showPopup("Quiz Finished", "Good job! You completed it.");
-        currentQuestion = 0;
-        loadQuestion();
-    }
-});
-
-skipBtn.addEventListener("click", () => {
-
-    currentQuestion++;
-
-    if(currentQuestion < questions.length){
-
-        loadQuestion();
-
-    }
-
-});
-function showPopup(title, message) {
-    document.getElementById("popup-title").innerText = title;
-    document.getElementById("popup-message").innerText = message;
-    document.getElementById("popup").style.display = "flex";
+.level-btn{
+    width: 140px;
+    height: 70px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(145deg, #334155, #1e293b);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.level-btn:hover{
+    transform: translateY(-5px) scale(1.05);
+    background: linear-gradient(145deg, #dc2626, #7f1d1d);
+    box-shadow: 0 15px 35px rgba(220,38,38,0.4);
 }
 
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
+.level-selection{
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.level-btn{
+    padding: 15px 25px;
+    border: none;
+    border-radius: 12px;
+    background: navy;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 120px;
+    height: 60px;
+}
+
+.level-btn:hover{
+    background: darkred;
+    transform: scale(1.05);
+}
+.quiz-container {
+  width: 90%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  animation: fadeIn 0.5s ease-in-out;
+  border: 1px solid rgba(0,0,0,0.05);
+  display: none;
+  color: white;
+ background: linear-gradient(135deg, #7f3a0a, #f87e32,#fdbe66);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.quiz-container h1{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #1d4ed8; 
+   
+    letter-spacing: 1px;
+   
+}
+#back-btn{
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border:3px, solid, rgba(15, 5, 5, 0.6);
+    border-radius: 6px;
+    background: rgb(203, 2, 42);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#back-btn:hover{
+    background: rgb(149, 1, 1);
+}
+.tagline{
+    text-align: center;
+    color: gray;
+    margin-bottom: 25px;
+}
+#question{
+    margin-bottom: 20px;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.option-btn{
+    width: 100%;
+    padding: 15px;
+    margin: 7px 0;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+}
+.option-btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(76, 77, 80, 0.4);
+}
+.button-group{
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+#skip-btn{
+    flex: 1;
+    padding: 12px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: linear-gradient(135deg, #64748b, #334155);
+}
+
+#next-btn{
+    flex: 1;
+    padding: 12px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    background: linear-gradient(135deg, #20e4fa, #5a7266);
+}
+#skip-btn:hover,#next-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(100,116,139,0.4);
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     background: rgba(0,0,0,0.45);
+
+    backdrop-filter: blur(6px);
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 1000;
+    /* background: rgba(33, 32, 32, 0.6);
+    justify-content: center;
+    align-items: center; */
+}
+
+
+.popup.show {
+    display: flex;
+}
+.popup-box {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    color: white;
+    padding: 25px 20px;
+    border-radius: 16px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.1);
+    animation: popIn 0.2s ease-in-out;
+
+}
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.okbutton{
+    margin-top: 15px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: crimson;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.okbutton:hover{
+    background: darkred;
+}
+.section-selection{
+
+    display: none;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+}
+
+ .section-btn{
+
+    width: 90px;
+
+    height: 90px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(255,255,255,0.15);
+
+    background: linear-gradient(145deg, #334155, #1e293b);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.section-btn:hover{
+
+    transform: scale(1.05);
+
+    background: darkred;
+}
+.section-container{
+
+    display: none;
+
+    width: 90%;
+
+    max-width: 650px;
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+
+    /* text-align: center; */
+
+    color: white;
+
+    animation: fadeIn 0.4s ease;
+}
+.section-container h2{
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    font-size: 32px;
+
+    /* letter-spacing: 1px; */
+}
+.section-btn{
+
+    width: 80px;
+
+    height: 80px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #334155;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+.section-btn:hover{
+
+    transform: translateY(-5px) scale(1.08);
+
+    background: linear-gradient(145deg, #dc2626, #7f1d1d);
+
+    box-shadow: 0 15px 30px rgba(220,38,38,0.4);
+}
+
+#section-back-btn{
+    display: block;
+
+    margin-bottom: 20px;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: crimson;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+#section-back-btn:hover{
+
+    transform: scale(1.05);
+
+    background: darkred;
+}
+#section-back-btn{
+ background: crimson;
+
+}
+#section-back-btn:hover{
+   background: brown;
+}
+.section-btn.completed{
+
+    background: linear-gradient(145deg, #16a34a, #166534);
+
+    border: 2px solid #4ade80;
+
+    color: white;
+}
+@media (max-width: 600px){
+
+    .home-screen{
+        width: 95%;
+        padding: 25px 15px;
+    }
+
+    .level-btn{
+        width: 45%;
+        height: 60px;
+        font-size: 14px;
+    }
+
+    .option-btn{
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .quiz-container{
+        padding: 20px;
+    }
 }
