@@ -5,12 +5,8 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 body{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;
     background-color: #e6f0ff;
-
 }
 .home-screen{
     width: 90%;
@@ -22,6 +18,19 @@ body{
     color: white;
     box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     animation: fadeIn 0.5s ease;
+}
+.levels-screen{
+
+    display: none;
+
+    width: 100%;
+    min-height: 100vh;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background: #e6f0ff;
 }
 .home-screen h1{
     font-size: 42px;
@@ -62,24 +71,7 @@ body{
     justify-content: center;
 }
 
-.level-btn{
-    padding: 15px 25px;
-    border: none;
-    border-radius: 12px;
-    background: navy;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: 0.3s;
-    width: 120px;
-    height: 60px;
-}
 
-.level-btn:hover{
-    background: darkred;
-    transform: scale(1.05);
-}
 .quiz-container {
   width: 90%;
   max-width: 420px;
@@ -117,7 +109,7 @@ body{
 #back-btn{
     margin-bottom: 20px;
     padding: 10px 15px;
-    border:3px, solid, rgba(15, 5, 5, 0.6);
+    border: 3px solid rgba(15, 5, 5, 0.6);
     border-radius: 6px;
     background: rgb(203, 2, 42);
     color: white;
@@ -164,7 +156,7 @@ body{
     gap: 15px;
     margin-top: 20px;
 }
-#skip-btn{
+#previous-btn{
     flex: 1;
     padding: 12px;
     border: none;
@@ -416,4 +408,315 @@ body{
     .quiz-container{
         padding: 20px;
     }
+}
+
+/* LANDING PAGE */
+
+.landing-page{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* LEFT SIDE */
+
+.hero-section{
+    width: 75%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #020617;
+}
+
+/* ANIMATED BACKGROUND */
+
+.animated-bg{
+    position: absolute;
+    width: 200%;
+    height: 200%;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(59,130,246,0.3),
+    transparent 20%),
+
+    radial-gradient(circle at top left,
+    rgba(236,72,153,0.3),
+    transparent 25%),
+
+    radial-gradient(circle at bottom right,
+    rgba(34,197,94,0.25),
+    transparent 25%);
+
+    animation: moveBg 15s linear infinite;
+}
+
+@keyframes moveBg{
+
+    0%{
+        transform: translate(0,0) rotate(0deg);
+    }
+
+    50%{
+        transform: translate(-10%, -10%) rotate(180deg);
+    }
+
+    100%{
+        transform: translate(0,0) rotate(360deg);
+    }
+}
+
+/* FLASHQUIZZ TEXT */
+
+.hero-content{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1{
+    font-size: 80px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    background: linear-gradient(90deg,
+    #38bdf8,
+    #818cf8,
+    #f472b6);
+
+     background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+.hero-content p{
+    margin-top: 15px;
+    font-size: 20px;
+    color: #cbd5e1;
+    letter-spacing: 1px;
+}
+
+@keyframes glow{
+
+    from{
+        text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    to{
+        text-shadow: 0 0 30px rgba(255,255,255,0.5);
+    }
+}
+
+/* RIGHT SIDEBAR */
+
+.sidebar-menu{
+    width: 25%;
+    background: linear-gradient(180deg,
+    #0f172a,
+    #1e293b);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+
+    padding: 20px;
+
+    box-shadow: -10px 0 30px rgba(0,0,0,0.4);
+}
+
+.menu-btn{
+    width: 85%;
+    padding: 18px;
+
+    border: none;
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+    backdrop-filter: blur(8px);
+
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.menu-btn:hover{
+    transform: translateX(-8px) scale(1.03);
+
+    background: linear-gradient(135deg,
+    #2563eb,
+    #7c3aed);
+
+    box-shadow: 0 10px 30px rgba(37,99,235,0.4);
+}
+
+.play-btn{
+    background: linear-gradient(135deg,
+    #dc2626,
+    #ea580c);
+}
+
+.play-btn:hover{
+    background: linear-gradient(135deg,
+    #ef4444,
+    #f97316);
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width: 768px){
+
+    .landing-page{
+        flex-direction: column;
+    }
+
+    .hero-section{
+        width: 100%;
+        height: 55vh;
+    }
+
+    .sidebar-menu{
+        width: 100%;
+        height: 45vh;
+
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+
+        gap: 15px;
+
+        padding: 20px;
+    }
+
+    .menu-btn{
+        width: 100%;
+        font-size: 15px;
+        padding: 16px;
+    }
+
+    .hero-content h1{
+        font-size: 48px;
+    }
+
+    .hero-content p{
+        font-size: 15px;
+    }
+}
+.section-container{
+    z-index: 10;
+}
+
+.quiz-container{
+    z-index: 10;
+}
+
+.levels-screen{
+    min-height: 100vh;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+}
+
+.section-container{
+    display: none;
+
+    width: 90%;
+    max-width: 650px;
+
+    margin: 80px auto;
+
+    position: relative;
+}
+
+.quiz-container{
+    display: none;
+
+    width: 90%;
+    max-width: 420px;
+
+    margin: 60px auto;
+}
+#levels-home-btn{
+    position: absolute;
+
+    top: 20px;
+
+    left: 20px;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: crimson;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#levels-home-btn:hover{
+    background: darkred;
+
+    transform: scale(1.05);
+}
+#previous-btn{
+    /* margin-bottom: 20px; */
+
+    /* margin-left: 10px; */
+
+    padding: 10px 15px;
+
+    border: 3px solid rgba(15, 5, 5, 0.6);
+
+    border-radius: 6px;
+
+    background: #2563eb;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+#previous-btn:hover{
+    background: #1d4ed8;
+}
+.button-group{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#next-btn,
+#previous-btn{
+    flex: 1;
 }
