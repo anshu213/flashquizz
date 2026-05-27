@@ -339,5 +339,117 @@ const questions = [
         
     
 // ......................30 questions Done..................................
+    {
+    question: "Which is the only star in our Solar System? ",
+
+    options: [
+        "Moon ",
+        "Sun ",
+        " Mars",
+        " Venus"
+    ],
+
+    answer: "Sun"
+},{
+    question: " Which planet is famous for its rings?",
+
+    options: [
+        " Neptune",
+        " Venus",
+        "Uranus ",
+        "Saturn "
+    ],
+
+    answer: "Saturn"
+},{
+    question: "Which planet is known as the Morning Star or Evening Star? ",
+
+    options: [
+        " Mercury",
+        " Venus",
+        " Mars",
+        " Neptune"
+    ],
+
+    answer: "Venus"
+},{
+    question: "If the Moon suddenly disappeared, what would be affected the most first? ",
+
+    options: [
+        " Tides",
+        " Seasons",
+        " Sunlight",
+        " Volcanoes"
+    ],
+
+    answer: "Tides"
+},{
+    question: " Which planet is called an Ice Giant?",
+
+    options: [
+        "Mars ",
+        "Jupiter ",
+        "Uranus ",
+        "Venus"
+    ],
+
+    answer: "Uranus"
+},{
+    question: "The asteroid belt lies between which two planets?",
+
+    options: [
+        "Earth and Mars",
+        "Mars and Jupiter",
+        "Jupiter and Saturn",
+        "Venus and Earth"
+    ],
+
+    answer: "Mars and Jupiter"
+},{
+    question: "Which planet has the shortest day due to fastest rotation?",
+
+    options: [
+        "Earth",
+        "Jupiter",
+        "Mercury",
+        "Saturn"
+    ],
+
+    answer: "Jupiter"
+},{
+    question: "Which planet is the largest in the Solar System? ",
+
+    options: [
+        "Earth",
+        "Saturn",
+        "Jupiter",
+        "Neptune"
+    ],
+
+    answer: "Jupiter"
+},{
+    question: "What keeps planets moving around the Sun?",
+
+    options: [
+        "Magnetic force",
+        "Wind from the Sun",
+        "Gravity",
+        "Light energy"
+    ],
+
+    answer: "Gravity"
+},{
+    question: "Why do we always see the same side of the Moon from Earth? ",
+
+    options: [
+        "The Moon does not rotate",
+        "The Moon rotates at the same speed it revolves around Earth",
+        "Earth does not rotate",
+        "Sunlight hides the other side"
+    ],
+
+    answer: "The Moon rotates at the same speed it revolves around Earth"
+},
 
 ];
+
