@@ -1,4 +1,4 @@
-let activeQuestions = [];
+ let activeQuestions = [];
  let levelQuestions = [];
  let score = 0;
  let answered = false;
@@ -10,7 +10,7 @@ const buttons = document.querySelectorAll(".option-btn");
 
 const nextBtn = document.getElementById("next-btn");
 
-const skipBtn = document.getElementById("skip-btn");
+// const skipBtn = document.getElementById("skip-btn");
 
 let currentQuestion = 0;
 
@@ -108,19 +108,6 @@ nextBtn.addEventListener("click", () => {
 
 });
 
-skipBtn.addEventListener("click", () => {
-
-    currentQuestion++;
-
-    if (currentQuestion < activeQuestions.length) {
-        loadQuestion();
-    } else {
-        
-        currentQuestion = 0;
-        
-    }
-
-});
 
 
 function showPopup(title, message) {
@@ -133,8 +120,22 @@ function closePopup() {
     document.getElementById("popup").style.display = "none";
 }
 
-const homeScreen =
-document.querySelector(".home-screen");
+const landingPage =
+document.querySelector(".landing-page");
+
+
+const levelsScreen =
+document.querySelector(".levels-screen");
+const playBtn =
+document.querySelector(".play-btn");
+
+playBtn.addEventListener("click", () => {
+
+    landingPage.style.display = "none";
+
+    levelsScreen.style.display = "flex";
+
+});
 
 const levelButtons =
 document.querySelectorAll(".level-btn");
@@ -159,7 +160,7 @@ questions.slice(start, end);
 
         currentQuestion = 0;
 
-       homeScreen.style.display = "none";
+      levelsScreen.style.display = "none";
 
 document.querySelector(".section-container")
 .style.display = "block";
@@ -204,32 +205,28 @@ sectionButtons.forEach((button, index) => {
 
 
 
-const backBtn =
-document.getElementById("back-btn");
-
+ const backBtn = document.getElementById("back-btn");
 backBtn.addEventListener("click", () => {
 
     document.querySelector(".quiz-container")
     .style.display = "none";
 
-   document.querySelector(".section-container")
-.style.display = "block";
+    document.querySelector(".section-container")
+    .style.display = "block";
 
-document.querySelector(".section-selection")
-.style.display = "flex";
+    document.querySelector(".section-selection")
+    .style.display = "flex";
 
     resetQuiz();
 
 });
-const sectionBackBtn =
-document.getElementById("section-back-btn");
-
-sectionBackBtn.addEventListener("click", () => {
+  const sectionBackBtn =document.getElementById("section-back-btn");
+  sectionBackBtn.addEventListener("click", () => {
 
     document.querySelector(".section-container")
     .style.display = "none";
 
-    homeScreen.style.display = "block";
+    levelsScreen.style.display = "flex";
 
 });
 
@@ -249,22 +246,27 @@ function resetQuiz() {
     // reload first question
     loadQuestion();
 }
+const levelsHomeBtn =
+document.getElementById("levels-home-btn");
 
+levelsHomeBtn.addEventListener("click", () => {
 
+    levelsScreen.style.display = "none";
 
+    landingPage.style.display = "flex";
 
+});
+const previousBtn =
+document.getElementById("previous-btn");
 
-  
+previousBtn.addEventListener("click", () => {
 
+    if(currentQuestion > 0){
 
- 
+        currentQuestion--;
 
- 
+        loadQuestion();
+    }
 
-  
-  
+});
 
-
-
-
-  
