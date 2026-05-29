@@ -3,6 +3,11 @@
  let score = 0;
  let answered = false;
  let currentSectionIndex = 0;
+ let answeredquestions = [];
+ let currentQuestion = 0;
+
+let userAnswers = [];
+let answeredQuestions = [];
 
  const question = document.getElementById("question");
 
@@ -12,7 +17,7 @@ const nextBtn = document.getElementById("next-btn");
 
 // const skipBtn = document.getElementById("skip-btn");
 
-let currentQuestion = 0;
+// let currentQuestion = 0;
 
 
 
@@ -20,16 +25,46 @@ function loadQuestion(){
 
     answered = false;
 
-    question.innerText = activeQuestions[currentQuestion].question;
+    question.innerText =
+    activeQuestions[currentQuestion].question;
+
+    const savedAnswer =
+    userAnswers[currentQuestion];
 
     buttons.forEach((button, index) => {
 
-        button.innerText = activeQuestions[currentQuestion].options[index];
+        button.innerText =
+        activeQuestions[currentQuestion].options[index];
 
-         button.style.background = "linear-gradient(135deg, #575759, #9b9da1)";
-         button.style.color = "white";
-        button.disabled = false; 
+        button.style.background =
+        "linear-gradient(135deg, #575759, #9b9da1)";
+
+        button.style.color = "white";
+
+        button.disabled = false;
+
+        // PREVIOUS ANSWER SHOW
+        if(savedAnswer){
+
+            if(button.innerText ===
+            activeQuestions[currentQuestion].answer){
+
+                button.style.background = "green";
+            }
+
+            if(button.innerText === savedAnswer &&
+               savedAnswer !== activeQuestions[currentQuestion].answer){
+
+                button.style.background = "red";
+            }
+
+            button.disabled = true;
+
+            answered = true;
+        }
+
     });
+
 }
 
 // loadQuestion();
@@ -47,9 +82,20 @@ buttons.forEach(button => {
             btn.disabled = true;
         });
  
-        if(button.innerText === correctAnswer){
+      userAnswers[currentQuestion] =
+button.innerText;
 
-    score++;
+if(!answeredQuestions[currentQuestion]){
+
+    answeredQuestions[currentQuestion] = true;
+
+    if(button.innerText === correctAnswer){
+
+        score++;
+    }
+}
+
+if(button.innerText === correctAnswer){
 
     button.style.background = "green";
 }
@@ -190,6 +236,8 @@ sectionButtons.forEach((button, index) => {
 
         currentQuestion = 0;
         score = 0;
+        userAnswers = [];
+        answeredQuestions = [];
 
         document.querySelector(".section-container")
         .style.display = "none";
